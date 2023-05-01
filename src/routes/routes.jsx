@@ -17,42 +17,46 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:4000/"),
+        loader: () => fetch("https://fab-travels-server.vercel.app/"),
       },
       {
         path: "booking/:id",
         element: <Booking />,
-        loader:({params})=> fetch(`http://localhost:4000/booking/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`https://fab-travels-server.vercel.app/booking/${params.id}`),
       },
-
     ],
   },
   {
-    path:'user',
-    element:<LoginLayouts />,
-    children:[
+    path: "user",
+    element: <LoginLayouts />,
+    children: [
       {
-        path:'login',
-        element:<Login />
+        path: "login",
+        element: <Login />,
       },
       {
-        path:'register',
-        element:<Register />
-      }
-    ]
-
+        path: "register",
+        element: <Register />,
+      },
+    ],
   },
   {
-    path:'booking',
-    element:<BookedLayouts />,
-    children:[
+    path: "booking",
+    element: <BookedLayouts />,
+    children: [
       {
-        path:"booked/:id",
-        element:<PrivateRoute><BookedPlace /></PrivateRoute>,
-        loader:({params})=> fetch(`http://localhost:4000/booked/${params.id}`)
-      }
-    ]
-  }
+        path: "booked/:id",
+        element: (
+          <PrivateRoute>
+            <BookedPlace />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://fab-travels-server.vercel.app/booked/${params.id}`),
+      },
+    ],
+  },
 ]);
 
 export default router;
