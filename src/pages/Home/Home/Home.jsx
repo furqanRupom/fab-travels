@@ -7,7 +7,6 @@ const Home = () => {
 
     return (
         <div>
-            <h1>this is our home {travelsData.length}</h1>
             <Carousel travelsData ={travelsData}/>
         </div>
     );

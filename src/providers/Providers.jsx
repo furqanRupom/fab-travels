@@ -6,22 +6,27 @@ const auth = getAuth(app);
 
 export const TravelsContext = createContext()
 const Providers = ({children}) => {
+    // for loader
+    const [loading,SetLoading] =  useState(true);
     // user
 
     const [user,setUser] = useState(null)
     // create user account
 
     const registerUser = (email,password)=>{
+        SetLoading(true)
        return createUserWithEmailAndPassword(auth,email,password)
     }
 
     // login user
 
     const LoginUser = (email,password)=>{
+        SetLoading(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
 
     const logOut = ()=>{
+        SetLoading(true)
        return signOut(auth)
     }
     // display user
@@ -37,6 +42,7 @@ const Providers = ({children}) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,currentUser =>{
                 setUser(currentUser)
+                SetLoading(false)
         })
         return () => {
             unsubscribe()
@@ -48,7 +54,8 @@ const Providers = ({children}) => {
         registerUser,
         LoginUser,
         logOut,
-        displayUserName
+        displayUserName,
+        loading
 
     }
     return (

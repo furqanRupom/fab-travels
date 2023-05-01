@@ -80,7 +80,7 @@ const Register = () => {
             </label>
             <div className="relative">
               <input
-                type={confirmShow ? "text" : "password"}
+                type={show ? "text" : "password"}
                 id="password"
                 className="w-full  px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:border-orange-500"
                 placeholder="Confirm your password"
@@ -105,7 +105,7 @@ const Register = () => {
             </label>
             <div className="relative">
               <input
-                type={show ? "text" : "password"}
+                type={confirmShow ? "text" : "password"}
                 id="password"
                 className="w-full  px-4 py-2 border border-gray-400 rounded-lg focus:outline-none focus:border-orange-500"
                 placeholder="Enter your password"
